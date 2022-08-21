@@ -1,0 +1,4 @@
+[
+  {"id":"dnick","element":"dark","level":60,"stars":6,"ascension":0,"faction":"lasir","rarity":"legendary","_class":"org.acetools.heroes.models.Hero"},
+  {"id":"valeria","element":"fire","level":60,"stars":6,"ascension":2,"faction":"lasir","rarity":"legendary","_class":"org.acetools.heroes.models.Hero"}
+]
