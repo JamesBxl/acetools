@@ -1,5 +1,6 @@
 package org.acetools.heroes.controllers;
 
+import io.swagger.annotations.Api;
 import org.acetools.heroes.exceptions.HeroAlreadyExistsException;
 import org.acetools.heroes.exceptions.HeroNotFoundException;
 import org.acetools.heroes.models.Hero;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+@Api(description = "ACE Tools Heroes API", value = "/heroes")
 @RestController
 public class HeroesController {
 

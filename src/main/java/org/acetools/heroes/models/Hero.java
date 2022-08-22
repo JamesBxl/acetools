@@ -3,6 +3,7 @@ package org.acetools.heroes.models;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import io.swagger.annotations.ApiParam;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,8 +12,11 @@ import javax.persistence.Id;
 public class Hero {
     @Id
     private String id;
+    @ApiParam(required = true, allowableValues = "dark,fire,light,water,wood")
     private HeroElement element;
+    @ApiParam(required = true, allowableValues = "common,rare,elite,epic,legendary")
     private HeroRarity rarity;
+    @ApiParam(required = true, allowableValues = "crisas,dragonscalemarsh,freecities,holylightempire,lasir,soulplunders,sylvanwoodlands,titanicelands")
     private HeroFaction faction;
 
     private int level; // 1-60
