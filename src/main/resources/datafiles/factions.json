@@ -1,0 +1,11 @@
+[
+  {"id":"1","name":"Holy Light Empire","_class":"org.acetools.models.Faction"},
+  {"id":"2","name":"Crisas","_class":"org.acetools.models.Faction"},
+  {"id":"3","name":"Lasir","_class":"org.acetools.models.Faction"},
+  {"id":"4","name":"Soulplunders","_class":"org.acetools.models.Faction"},
+  {"id":"5","name":"Sylvan Woodlands","_class":"org.acetools.models.Faction"},
+  {"id":"6","name":"Titan Icelands","_class":"org.acetools.models.Faction"},
+  {"id":"7","name":"Free Cities","_class":"org.acetools.models.Faction"},
+  {"id":"8","name":"Dragonscale Marsh","_class":"org.acetools.models.Faction"},
+  {"id":"9","name":"Visitors by Sea","_class":"org.acetools.models.Faction"}
+]

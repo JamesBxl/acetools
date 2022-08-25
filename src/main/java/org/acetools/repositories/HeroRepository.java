@@ -1,6 +1,7 @@
-package org.acetools.heroes.repositories;
+package org.acetools.repositories;
 
-import org.acetools.heroes.models.Hero;
+import org.acetools.models.Faction;
+import org.acetools.models.Hero;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +11,6 @@ import java.util.List;
 public interface HeroRepository extends JpaRepository<Hero, String> {
     List<Hero> findAllByElement(Hero.HeroElement element);
     List<Hero> findAllByRarity(Hero.HeroRarity rarity);
-    List<Hero> findAllByFaction(Hero.HeroFaction faction);
+    List<Hero> findAllByFaction(Faction faction);
     List<Hero> findAll();
 }

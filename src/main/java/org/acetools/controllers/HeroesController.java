@@ -1,11 +1,12 @@
-package org.acetools.heroes.controllers;
+package org.acetools.controllers;
 
 import io.swagger.annotations.Api;
-import org.acetools.heroes.exceptions.HeroAlreadyExistsException;
-import org.acetools.heroes.exceptions.HeroNotFoundException;
-import org.acetools.heroes.models.Hero;
-import org.acetools.heroes.repositories.HeroRepository;
-import org.acetools.heroes.utils.HeroesUtils;
+import org.acetools.exceptions.HeroAlreadyExistsException;
+import org.acetools.exceptions.HeroNotFoundException;
+import org.acetools.models.Faction;
+import org.acetools.models.Hero;
+import org.acetools.repositories.HeroRepository;
+import org.acetools.utils.HeroesUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import java.util.stream.Collectors;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@Api(description = "ACE Tools Heroes API", value = "/heroes")
+@Api(value = "/heroes")
 @RestController
 public class HeroesController {
 
@@ -63,7 +64,7 @@ public class HeroesController {
     }
 
     @GetMapping("/heroes/faction/{faction}")
-    public CollectionModel<EntityModel<Hero>> byFaction(@PathVariable Hero.HeroFaction faction) {
+    public CollectionModel<EntityModel<Hero>> byFaction(@PathVariable Faction faction) {
         logger.debug("HeroesController findAll - GET request for findByFaction.");
         List<EntityModel<Hero>> heroes = heroRepository.findAllByFaction(faction).stream()
                 .map(HeroesUtils::getHeroEntityModel)

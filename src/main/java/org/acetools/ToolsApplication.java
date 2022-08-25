@@ -1,7 +1,8 @@
-package org.acetools.heroes;
+package org.acetools;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -13,18 +14,19 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @SpringBootApplication
-@EnableJpaRepositories
+@EnableJpaRepositories("org.acetools.repositories")
+@EntityScan("org.acetools.models")
 @Configuration
-public class HeroesApplication {
+public class ToolsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HeroesApplication.class, args);
+        SpringApplication.run(ToolsApplication.class, args);
     }
 
     @Bean
     public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
         Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[]{new ClassPathResource("datafiles/heroes.json")});
+        factory.setResources(new Resource[]{new ClassPathResource("datafiles/factions.json"), new ClassPathResource("datafiles/heroes.json")});
         return factory;
     }
 

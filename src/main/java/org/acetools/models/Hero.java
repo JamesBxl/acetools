@@ -1,23 +1,28 @@
-package org.acetools.heroes.models;
+package org.acetools.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import io.swagger.annotations.ApiParam;
+import org.springframework.data.rest.core.annotation.RestResource;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "heroes")
 public class Hero {
     @Id
     private String id;
+    private String name;
     @ApiParam(required = true, allowableValues = "dark,fire,light,water,wood")
     private HeroElement element;
     @ApiParam(required = true, allowableValues = "common,rare,elite,epic,legendary")
     private HeroRarity rarity;
-    @ApiParam(required = true, allowableValues = "crisas,dragonscalemarsh,freecities,holylightempire,lasir,soulplunders,sylvanwoodlands,titanicelands")
-    private HeroFaction faction;
+    @ApiParam(required = true)
+    @OneToOne
+    @JoinColumn(name = "faction_id")
+    @RestResource(path = "factionDetails", rel="faction")
+    private Faction faction;
 
     private int level; // 1-60
     private int stars; // 1-6
@@ -35,13 +40,12 @@ public class Hero {
 
     public enum HeroElement{dark, fire, light, water, wood};
     public enum HeroRarity{common, rare, elite, epic, legendary};
-    public enum HeroFaction{crisas, dragonscalemarsh, freecities, holylightempire, lasir, soulplunders, sylvanwoodlands, titanicelands};
 
     public Hero() {
         // Default constructor
     }
 
-    public Hero(String id, HeroElement element, HeroRarity rarity, HeroFaction faction, int level, int stars, int ascension) {
+    public Hero(String id, HeroElement element, HeroRarity rarity, Faction faction, int level, int stars, int ascension) {
         this.id = id;
         this.element = element;
         this.rarity = rarity;
@@ -75,11 +79,11 @@ public class Hero {
         this.rarity = rarity;
     }
 
-    public HeroFaction getFaction() {
+    public Faction getFaction() {
         return faction;
     }
 
-    public void setFaction(HeroFaction faction) {
+    public void setFaction(Faction faction) {
         this.faction = faction;
     }
 

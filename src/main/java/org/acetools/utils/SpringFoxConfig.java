@@ -1,4 +1,4 @@
-package org.acetools.heroes.utils;
+package org.acetools.utils;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
