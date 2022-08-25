@@ -3,10 +3,12 @@ package org.acetools.controllers;
 import io.swagger.annotations.Api;
 import org.acetools.exceptions.HeroAlreadyExistsException;
 import org.acetools.exceptions.HeroNotFoundException;
+import org.acetools.models.Element;
 import org.acetools.models.Faction;
 import org.acetools.models.Hero;
+import org.acetools.models.Rarity;
 import org.acetools.repositories.HeroRepository;
-import org.acetools.utils.HeroesUtils;
+import org.acetools.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,27 +39,27 @@ public class HeroesController {
     public CollectionModel<EntityModel<Hero>> all() {
         logger.debug("HeroesController findAll - GET request for findAll.");
         List<EntityModel<Hero>> heroes = heroRepository.findAll().stream()
-                .map(HeroesUtils::getHeroEntityModel)
+                .map(Utils::getHeroEntityModel)
                 .collect(Collectors.toList());
 
         return CollectionModel.of(heroes, linkTo(methodOn(HeroesController.class).all()).withSelfRel());
     }
 
     @GetMapping("/heroes/element/{element}")
-    public CollectionModel<EntityModel<Hero>> byElement(@PathVariable Hero.HeroElement element) {
+    public CollectionModel<EntityModel<Hero>> byElement(@PathVariable Element element) {
         logger.debug("HeroesController findAll - GET request for findByElement.");
         List<EntityModel<Hero>> heroes = heroRepository.findAllByElement(element).stream()
-                .map(HeroesUtils::getHeroEntityModel)
+                .map(Utils::getHeroEntityModel)
                 .collect(Collectors.toList());
 
         return CollectionModel.of(heroes, linkTo(methodOn(HeroesController.class).byElement(element)).withSelfRel());
     }
 
     @GetMapping("/heroes/rarity/{rarity}")
-    public CollectionModel<EntityModel<Hero>> byRarity(@PathVariable Hero.HeroRarity rarity) {
+    public CollectionModel<EntityModel<Hero>> byRarity(@PathVariable Rarity rarity) {
         logger.debug("HeroesController findAll - GET request for findByRarity.");
         List<EntityModel<Hero>> heroes = heroRepository.findAllByRarity(rarity).stream()
-                .map(HeroesUtils::getHeroEntityModel)
+                .map(Utils::getHeroEntityModel)
                 .collect(Collectors.toList());
 
         return CollectionModel.of(heroes, linkTo(methodOn(HeroesController.class).byRarity(rarity)).withSelfRel());
@@ -67,18 +69,18 @@ public class HeroesController {
     public CollectionModel<EntityModel<Hero>> byFaction(@PathVariable Faction faction) {
         logger.debug("HeroesController findAll - GET request for findByFaction.");
         List<EntityModel<Hero>> heroes = heroRepository.findAllByFaction(faction).stream()
-                .map(HeroesUtils::getHeroEntityModel)
+                .map(Utils::getHeroEntityModel)
                 .collect(Collectors.toList());
 
         return CollectionModel.of(heroes, linkTo(methodOn(HeroesController.class).byFaction(faction)).withSelfRel());
     }
 
     @GetMapping("/heroes/{id}")
-    public EntityModel<Hero> one(@PathVariable String id) {
+    public EntityModel<Hero> one(@PathVariable int id) {
         logger.debug("HeroesController findAll - GET request for findById.");
         Hero hero = heroRepository.findById(id).orElseThrow(() -> new HeroNotFoundException(id));
 
-        return HeroesUtils.getHeroEntityModel(hero);
+        return Utils.getHeroEntityModel(hero);
     }
 
 
@@ -95,7 +97,7 @@ public class HeroesController {
     }
 
     @DeleteMapping("/heroes/{id}")
-    public void deleteHero(@PathVariable String id) {
+    public void deleteHero(@PathVariable int id) {
         if (logger.isDebugEnabled()) {
             logger.debug("HeroesController deleteHero - DELETE request for hero with id: " + id);
         }

@@ -26,7 +26,11 @@ public class ToolsApplication {
     @Bean
     public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
         Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[]{new ClassPathResource("datafiles/factions.json"), new ClassPathResource("datafiles/heroes.json")});
+        factory.setResources(new Resource[]{
+                new ClassPathResource("datafiles/elements.json"),
+                new ClassPathResource("datafiles/rarity.json"),
+                new ClassPathResource("datafiles/factions.json"),
+                new ClassPathResource("datafiles/heroes.json")});
         return factory;
     }
 

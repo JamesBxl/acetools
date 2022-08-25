@@ -1,12 +1,12 @@
 package org.acetools.repositories;
 
-import org.acetools.models.Faction;
+import org.acetools.models.Rarity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface FactionRepository extends JpaRepository<Faction, Integer> {
-    List<Faction> findAll();
+public interface RarityRepository extends JpaRepository<Rarity, Integer> {
+    List<Rarity> findAll();
 }

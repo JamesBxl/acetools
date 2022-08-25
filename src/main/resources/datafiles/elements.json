@@ -1,0 +1,7 @@
+[
+  {"id":1,"name":"Fire","_class":"org.acetools.models.Element"},
+  {"id":2,"name":"Water","_class":"org.acetools.models.Element"},
+  {"id":3,"name":"Wood","_class":"org.acetools.models.Element"},
+  {"id":4,"name":"Light","_class":"org.acetools.models.Element"},
+  {"id":5,"name":"Dark","_class":"org.acetools.models.Element"}
+]

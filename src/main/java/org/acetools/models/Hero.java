@@ -9,15 +9,20 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "heroes")
 public class Hero {
     @Id
-    private String id;
+    private int id;
     private String name;
-    @ApiParam(required = true, allowableValues = "dark,fire,light,water,wood")
-    private HeroElement element;
-    @ApiParam(required = true, allowableValues = "common,rare,elite,epic,legendary")
-    private HeroRarity rarity;
+    @ApiParam(required = true)
+    @OneToOne
+    @JoinColumn(name = "element_id")
+    @RestResource(path = "elementDetails", rel="element")
+    private Element element;
+    @ApiParam(required = true)
+    @OneToOne
+    @JoinColumn(name = "rarity_id")
+    @RestResource(path = "rarityDetails", rel="rarity")
+    private Rarity rarity;
     @ApiParam(required = true)
     @OneToOne
     @JoinColumn(name = "faction_id")
@@ -38,14 +43,11 @@ public class Hero {
     private int statAgility;
     private int statPrecision;
 
-    public enum HeroElement{dark, fire, light, water, wood};
-    public enum HeroRarity{common, rare, elite, epic, legendary};
-
     public Hero() {
         // Default constructor
     }
 
-    public Hero(String id, HeroElement element, HeroRarity rarity, Faction faction, int level, int stars, int ascension) {
+    public Hero(int id, Element element, Rarity rarity, Faction faction, int level, int stars, int ascension) {
         this.id = id;
         this.element = element;
         this.rarity = rarity;
@@ -55,27 +57,35 @@ public class Hero {
         this.ascension = ascension;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public HeroElement getElement() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Element getElement() {
         return element;
     }
 
-    public void setElement(HeroElement element) {
+    public void setElement(Element element) {
         this.element = element;
     }
 
-    public HeroRarity getRarity() {
+    public Rarity getRarity() {
         return rarity;
     }
 
-    public void setRarity(HeroRarity rarity) {
+    public void setRarity(Rarity rarity) {
         this.rarity = rarity;
     }
 

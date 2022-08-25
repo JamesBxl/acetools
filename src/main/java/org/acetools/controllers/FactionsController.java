@@ -4,7 +4,7 @@ import io.swagger.annotations.Api;
 import org.acetools.exceptions.FactionNotFoundException;
 import org.acetools.models.Faction;
 import org.acetools.repositories.FactionRepository;
-import org.acetools.utils.FactionUtils;
+import org.acetools.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,17 +37,17 @@ public class FactionsController {
     public CollectionModel<EntityModel<Faction>> all() {
         logger.debug("FactionsController findAll - GET request for findAll.");
         List<EntityModel<Faction>> factions = factionRepository.findAll().stream()
-                .map(FactionUtils::getFactionEntityModel)
+                .map(Utils::getFactionEntityModel)
                 .collect(Collectors.toList());
 
         return CollectionModel.of(factions, linkTo(methodOn(FactionsController.class).all()).withSelfRel());
     }
 
     @GetMapping("/factions/{id}")
-    public EntityModel<Faction> one(@PathVariable String id) {
+    public EntityModel<Faction> one(@PathVariable int id) {
         logger.debug("FactionsController findAll - GET request for findById.");
         Faction faction = factionRepository.findById(id).orElseThrow(() -> new FactionNotFoundException(id));
 
-        return FactionUtils.getFactionEntityModel(faction);
+        return Utils.getFactionEntityModel(faction);
     }
 }
