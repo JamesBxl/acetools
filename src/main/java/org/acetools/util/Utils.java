@@ -1,13 +1,7 @@
-package org.acetools.utils;
+package org.acetools.util;
 
-import org.acetools.controllers.ElementController;
-import org.acetools.controllers.FactionsController;
-import org.acetools.controllers.HeroesController;
-import org.acetools.controllers.RarityController;
-import org.acetools.models.Element;
-import org.acetools.models.Faction;
-import org.acetools.models.Hero;
-import org.acetools.models.Rarity;
+import org.acetools.controller.*;
+import org.acetools.entity.*;
 import org.springframework.hateoas.EntityModel;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -36,5 +30,15 @@ public final class Utils {
         return EntityModel.of(element,
                 linkTo(methodOn(ElementController.class).one(element.getId())).withSelfRel(),
                 linkTo(methodOn(ElementController.class).all()).withRel("element"));
+    }
+    public static EntityModel<Spell> getSpellEntityModel(Spell spell) {
+        return EntityModel.of(spell,
+                linkTo(methodOn(SpellController.class).one(spell.getId())).withSelfRel(),
+                linkTo(methodOn(SpellController.class).all()).withRel("spell"));
+    }
+    public static EntityModel<Squad> getSquadEntityModel(Squad squad) {
+        return EntityModel.of(squad,
+                linkTo(methodOn(SquadController.class).one(squad.getId())).withSelfRel(),
+                linkTo(methodOn(SquadController.class).all()).withRel("squad"));
     }
 }

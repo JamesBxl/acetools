@@ -1,4 +1,4 @@
-package org.acetools.exceptions;
+package org.acetools.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;

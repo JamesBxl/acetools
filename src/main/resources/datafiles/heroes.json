@@ -1,4 +1,4 @@
 [
-  {"id":41,"name":"Darkened Nicklaus","element":{"id": 5},"level":60,"stars":6,"ascension":0,"faction":{"id": 3},"rarity":{"id":1},"_class":"org.acetools.models.Hero"},
-  {"id":40,"name":"Valeria","element":{"id": 1},"level":60,"stars":6,"ascension":2,"faction":{"id": 3},"rarity":{"id":1},"_class":"org.acetools.models.Hero"}
+  {"id":41,"name":"Darkened Nicklaus","element":{"id": 5},"level":60,"stars":6,"ascension":0,"faction":{"id": 3},"rarity":{"id":1},"_class":"org.acetools.entity.Hero"},
+  {"id":40,"name":"Valeria","element":{"id": 1},"level":60,"stars":6,"ascension":2,"faction":{"id": 3},"rarity":{"id":1},"_class":"org.acetools.entity.Hero"}
 ]

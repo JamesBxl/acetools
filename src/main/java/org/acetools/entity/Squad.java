@@ -1,19 +1,24 @@
-package org.acetools.models;
+package org.acetools.entity;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Rarity {
+public class Squad {
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     private String name;
+
+    @OneToMany
+    private List<Hero> heroes;
+    @OneToMany
+    private List<Spell> spells;
 
     public int getId() {
         return id;
@@ -29,6 +34,22 @@ public class Rarity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Hero> getHeroes() {
+        return heroes;
+    }
+
+    public void setHeroes(List<Hero> heroes) {
+        this.heroes = heroes;
+    }
+
+    public List<Spell> getSpells() {
+        return spells;
+    }
+
+    public void setSpells(List<Spell> spells) {
+        this.spells = spells;
     }
 
     @Override

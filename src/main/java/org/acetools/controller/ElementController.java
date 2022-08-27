@@ -1,10 +1,10 @@
-package org.acetools.controllers;
+package org.acetools.controller;
 
 import io.swagger.annotations.Api;
-import org.acetools.exceptions.ElementNotFoundException;
-import org.acetools.models.Element;
-import org.acetools.repositories.ElementRepository;
-import org.acetools.utils.Utils;
+import org.acetools.exception.ElementNotFoundException;
+import org.acetools.entity.Element;
+import org.acetools.repository.ElementRepository;
+import org.acetools.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

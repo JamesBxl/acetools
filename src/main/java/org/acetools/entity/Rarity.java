@@ -1,4 +1,4 @@
-package org.acetools.models;
+package org.acetools.entity;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Faction {
+public class Rarity {
     @Id
     private int id;
 

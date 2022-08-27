@@ -1,14 +1,14 @@
-package org.acetools.controllers;
+package org.acetools.controller;
 
 import io.swagger.annotations.Api;
-import org.acetools.exceptions.HeroAlreadyExistsException;
-import org.acetools.exceptions.HeroNotFoundException;
-import org.acetools.models.Element;
-import org.acetools.models.Faction;
-import org.acetools.models.Hero;
-import org.acetools.models.Rarity;
-import org.acetools.repositories.HeroRepository;
-import org.acetools.utils.Utils;
+import org.acetools.exception.HeroAlreadyExistsException;
+import org.acetools.exception.HeroNotFoundException;
+import org.acetools.entity.Element;
+import org.acetools.entity.Faction;
+import org.acetools.entity.Hero;
+import org.acetools.entity.Rarity;
+import org.acetools.repository.HeroRepository;
+import org.acetools.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

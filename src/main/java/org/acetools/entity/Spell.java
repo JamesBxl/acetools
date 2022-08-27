@@ -1,4 +1,4 @@
-package org.acetools.models;
+package org.acetools.entity;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -6,14 +6,15 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-public class Element {
+public class Spell {
     @Id
     private int id;
 
     private String name;
+    private String description;
+    private int timer;
 
     public int getId() {
         return id;
@@ -29,6 +30,22 @@ public class Element {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getTimer() {
+        return timer;
+    }
+
+    public void setTimer(int time) {
+        this.timer = time;
     }
 
     @Override

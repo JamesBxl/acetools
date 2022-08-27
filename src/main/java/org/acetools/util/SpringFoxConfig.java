@@ -1,4 +1,4 @@
-package org.acetools.utils;
+package org.acetools.util;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

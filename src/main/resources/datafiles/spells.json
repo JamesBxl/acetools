@@ -1,0 +1,11 @@
+[
+  {"id":"1","name":"Smoldering Flames","description":"","_class":"org.acetools.entity.Spell"},
+  {"id":"2","name":"Gaia's Renewal","description":"","_class":"org.acetools.entity.Spell"},
+  {"id":"3","name":"Water Prison","description":"","_class":"org.acetools.entity.Spell"},
+  {"id":"4","name":"Last Breath","description":"","_class":"org.acetools.entity.Spell"},
+  {"id":"5","name":"Sundering Purgatory","description":"","_class":"org.acetools.entity.Spell"},
+  {"id":"6","name":"Shield of Mercy","description":"","_class":"org.acetools.entity.Spell"},
+  {"id":"7","name":"Stone Shackles","description":"","_class":"org.acetools.entity.Spell"},
+  {"id":"8","name":"Rage Aura","description":"","_class":"org.acetools.entity.Spell"},
+  {"id":"9","name":"Agile Leap","description":"","_class":"org.acetools.entity.Spell"}
+]

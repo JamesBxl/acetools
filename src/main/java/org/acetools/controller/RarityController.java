@@ -1,10 +1,10 @@
-package org.acetools.controllers;
+package org.acetools.controller;
 
 import io.swagger.annotations.Api;
-import org.acetools.exceptions.RarityNotFoundException;
-import org.acetools.models.Rarity;
-import org.acetools.repositories.RarityRepository;
-import org.acetools.utils.Utils;
+import org.acetools.exception.RarityNotFoundException;
+import org.acetools.entity.Rarity;
+import org.acetools.repository.RarityRepository;
+import org.acetools.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

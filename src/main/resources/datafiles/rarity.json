@@ -1,8 +1,8 @@
 [
-  {"id":"1","name":"Legendary","_class":"org.acetools.models.Rarity"},
-  {"id":"2","name":"Epic","_class":"org.acetools.models.Rarity"},
-  {"id":"3","name":"Elite","_class":"org.acetools.models.Rarity"},
-  {"id":"4","name":"Rare","_class":"org.acetools.models.Rarity"},
-  {"id":"5","name":"Common","_class":"org.acetools.models.Rarity"},
-  {"id":"6","name":"Material","_class":"org.acetools.models.Rarity"}
+  {"id":"1","name":"Legendary","_class":"org.acetools.entity.Rarity"},
+  {"id":"2","name":"Epic","_class":"org.acetools.entity.Rarity"},
+  {"id":"3","name":"Elite","_class":"org.acetools.entity.Rarity"},
+  {"id":"4","name":"Rare","_class":"org.acetools.entity.Rarity"},
+  {"id":"5","name":"Common","_class":"org.acetools.entity.Rarity"},
+  {"id":"6","name":"Material","_class":"org.acetools.entity.Rarity"}
 ]

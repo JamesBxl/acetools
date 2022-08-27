@@ -1,6 +1,6 @@
-package org.acetools.repositories;
+package org.acetools.repository;
 
-import org.acetools.models.Rarity;
+import org.acetools.entity.Rarity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

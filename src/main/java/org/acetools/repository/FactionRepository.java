@@ -1,6 +1,6 @@
-package org.acetools.repositories;
+package org.acetools.repository;
 
-import org.acetools.models.Faction;
+import org.acetools.entity.Faction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

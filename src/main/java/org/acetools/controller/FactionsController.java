@@ -1,10 +1,10 @@
-package org.acetools.controllers;
+package org.acetools.controller;
 
 import io.swagger.annotations.Api;
-import org.acetools.exceptions.FactionNotFoundException;
-import org.acetools.models.Faction;
-import org.acetools.repositories.FactionRepository;
-import org.acetools.utils.Utils;
+import org.acetools.exception.FactionNotFoundException;
+import org.acetools.entity.Faction;
+import org.acetools.repository.FactionRepository;
+import org.acetools.util.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,8 +14,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @SpringBootApplication
-@EnableJpaRepositories("org.acetools.repositories")
-@EntityScan("org.acetools.models")
+@EnableJpaRepositories("org.acetools.repository")
+@EntityScan("org.acetools.entity")
 @Configuration
 public class ToolsApplication {
 
@@ -30,6 +30,7 @@ public class ToolsApplication {
                 new ClassPathResource("datafiles/elements.json"),
                 new ClassPathResource("datafiles/rarity.json"),
                 new ClassPathResource("datafiles/factions.json"),
+                new ClassPathResource("datafiles/spells.json"),
                 new ClassPathResource("datafiles/heroes.json")});
         return factory;
     }
