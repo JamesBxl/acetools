@@ -10,16 +10,16 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public final class Utils {
     public static EntityModel<Hero> getHeroEntityModel(Hero hero) {
         return EntityModel.of(hero,
-                linkTo(methodOn(HeroesController.class).one(hero.getId())).withSelfRel(),
-                linkTo(methodOn(HeroesController.class).byFaction(hero.getFaction())).withRel("faction"),
-                linkTo(methodOn(HeroesController.class).byElement(hero.getElement())).withRel("element"),
-                linkTo(methodOn(HeroesController.class).byRarity(hero.getRarity())).withRel("rarity"),
-                linkTo(methodOn(HeroesController.class).all()).withRel("heroes"));
+                linkTo(methodOn(HeroController.class).one(hero.getId())).withSelfRel(),
+                linkTo(methodOn(HeroController.class).byFaction(hero.getFaction())).withRel("faction"),
+                linkTo(methodOn(HeroController.class).byElement(hero.getElement())).withRel("element"),
+                linkTo(methodOn(HeroController.class).byRarity(hero.getRarity())).withRel("rarity"),
+                linkTo(methodOn(HeroController.class).all()).withRel("heroes"));
     }
     public static EntityModel<Faction> getFactionEntityModel(Faction faction) {
         return EntityModel.of(faction,
-                linkTo(methodOn(FactionsController.class).one(faction.getId())).withSelfRel(),
-                linkTo(methodOn(FactionsController.class).all()).withRel("factions"));
+                linkTo(methodOn(FactionController.class).one(faction.getId())).withSelfRel(),
+                linkTo(methodOn(FactionController.class).all()).withRel("factions"));
     }
     public static EntityModel<Rarity> getRarityEntityModel(Rarity rarity) {
         return EntityModel.of(rarity,
@@ -40,5 +40,15 @@ public final class Utils {
         return EntityModel.of(squad,
                 linkTo(methodOn(SquadController.class).one(squad.getId())).withSelfRel(),
                 linkTo(methodOn(SquadController.class).all()).withRel("squad"));
+    }
+    public static EntityModel<GearSet> getGearSetEntityModel(GearSet gearSet) {
+        return EntityModel.of(gearSet,
+                linkTo(methodOn(GearSetController.class).one(gearSet.getId())).withSelfRel(),
+                linkTo(methodOn(GearSetController.class).all()).withRel("gearset"));
+    }
+    public static EntityModel<SquadHero> getSquadHeroEntityModel(SquadHero squadHero) {
+        return EntityModel.of(squadHero,
+                linkTo(methodOn(SquadHeroController.class).one(squadHero.getId())).withSelfRel(),
+                linkTo(methodOn(SquadHeroController.class).all()).withRel("squadhero"));
     }
 }

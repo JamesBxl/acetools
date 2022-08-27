@@ -4,21 +4,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-public class Squad {
+public class GearSet {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
     private String name;
-
-    @OneToMany
-    private List<SquadHero> heroes;
-    @OneToMany
-    private List<Spell> spells;
+    private String description;
 
     public int getId() {
         return id;
@@ -36,20 +34,12 @@ public class Squad {
         this.name = name;
     }
 
-    public List<SquadHero> getHeroes() {
-        return heroes;
+    public String getDescription() {
+        return description;
     }
 
-    public void setHeroes(List<SquadHero> heroes) {
-        this.heroes = heroes;
-    }
-
-    public List<Spell> getSpells() {
-        return spells;
-    }
-
-    public void setSpells(List<Spell> spells) {
-        this.spells = spells;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

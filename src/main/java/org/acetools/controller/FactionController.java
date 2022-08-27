@@ -20,32 +20,32 @@ import java.util.stream.Collectors;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@Api(value = "/factions")
+@Api(value = "/faction")
 @RestController
-public class FactionsController {
+public class FactionController {
 
-    static Logger logger = LoggerFactory.getLogger(FactionsController.class);
+    static Logger logger = LoggerFactory.getLogger(FactionController.class);
 
     private final FactionRepository factionRepository;
 
     @Autowired
-    public FactionsController(FactionRepository factionRepository) {
+    public FactionController(FactionRepository factionRepository) {
         this.factionRepository = factionRepository;
     }
 
-    @GetMapping("/factions")
+    @GetMapping("/faction")
     public CollectionModel<EntityModel<Faction>> all() {
-        logger.debug("FactionsController findAll - GET request for findAll.");
+        logger.debug("FactionController findAll - GET request for findAll.");
         List<EntityModel<Faction>> factions = factionRepository.findAll().stream()
                 .map(Utils::getFactionEntityModel)
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(factions, linkTo(methodOn(FactionsController.class).all()).withSelfRel());
+        return CollectionModel.of(factions, linkTo(methodOn(FactionController.class).all()).withSelfRel());
     }
 
-    @GetMapping("/factions/{id}")
+    @GetMapping("/faction/{id}")
     public EntityModel<Faction> one(@PathVariable int id) {
-        logger.debug("FactionsController findAll - GET request for findById.");
+        logger.debug("FactionController findAll - GET request for findById.");
         Faction faction = factionRepository.findById(id).orElseThrow(() -> new FactionNotFoundException(id));
 
         return Utils.getFactionEntityModel(faction);

@@ -50,10 +50,10 @@ public class SquadController {
         return Utils.getSquadEntityModel(squad);
     }
 
-    @PostMapping("/squad/")
+    @PutMapping("/squad/")
     public Squad newSquad(@RequestBody Squad newSquad) {
         if (logger.isDebugEnabled()) {
-            logger.debug("SquadController newSquad - POST request for potentially new squad: " + newSquad.toString());
+            logger.debug("SquadController newSquad - PUT request for potentially new squad: " + newSquad.toString());
         }
         if (squadRepository.existsById(newSquad.getId())) {
             throw new HeroAlreadyExistsException(newSquad.getId());

@@ -1,0 +1,10 @@
+[
+  {"id":"1","name":"Terra Set","_class":"org.acetools.entity.GearSet"},
+  {"id":"2","name":"Warrior Set","_class":"org.acetools.entity.GearSet"},
+  {"id":"3","name":"Raider Set","_class":"org.acetools.entity.GearSet"},
+  {"id":"4","name":"Rage Set","_class":"org.acetools.entity.GearSet"},
+  {"id":"5","name":"Raptor Set","_class":"org.acetools.entity.GearSet"},
+  {"id":"6","name":"Vanguard Set","_class":"org.acetools.entity.GearSet"},
+  {"id":"7","name":"Faith Set","_class":"org.acetools.entity.GearSet"},
+  {"id":"8","name":"Revival Set","_class":"org.acetools.entity.GearSet"}
+]
