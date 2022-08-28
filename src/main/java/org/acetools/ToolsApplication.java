@@ -40,4 +40,5 @@ public class ToolsApplication {
     public InternalResourceViewResolver defaultViewResolver() {
         return new InternalResourceViewResolver();
     }
+
 }

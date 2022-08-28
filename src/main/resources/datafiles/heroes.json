@@ -1,4 +1,7 @@
 [
-  {"id":41,"name":"Darkened Nicklaus","element":{"id": 5},"level":60,"stars":6,"ascension":0,"faction":{"id": 3},"rarity":{"id":1},"_class":"org.acetools.entity.Hero"},
-  {"id":40,"name":"Valeria","element":{"id": 1},"level":60,"stars":6,"ascension":2,"faction":{"id": 3},"rarity":{"id":1},"_class":"org.acetools.entity.Hero"}
+  {"id":41,"name":"Darkened Nicklaus","element":{"id":5},"faction":{"id":3},"rarity":{"id":1},"_class":"org.acetools.entity.Hero"},
+  {"id":40,"name":"Valeria","element":{"id":1},"faction":{"id":3},"rarity":{"id":1},"_class":"org.acetools.entity.Hero"},
+  {"id":43,"name":"Evelyn Firstdawn","element":{"id":4},"faction":{"id":3},"rarity":{"id":1},"_class":"org.acetools.entity.Hero"},
+  {"id":58,"name":"Ciara","element":{"id":2},"faction":{"id":4},"rarity":{"id":1},"_class":"org.acetools.entity.Hero"},
+  {"id":126,"name":"Nathalia","element":{"id":2},"faction":{"id":7},"rarity":{"id":2},"_class":"org.acetools.entity.Hero"}
 ]

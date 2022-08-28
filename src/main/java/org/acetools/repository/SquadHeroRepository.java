@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface SquadHeroRepository extends JpaRepository<SquadHero, Integer> {
     List<SquadHero> findAll();
+    List<SquadHero> findByHeroId(int id);
 }

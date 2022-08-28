@@ -8,13 +8,25 @@ public class SquadHero {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Hero hero;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<GearSet> sets;
     private int level;
-    private int ascension;
     private int stars;
+    private int ascension;
+
+    public SquadHero() {
+        // Default constructor
+    }
+
+    public SquadHero(Hero hero, List<GearSet> sets, int level, int stars, int ascension) {
+        this.hero = hero;
+        this.sets = sets;
+        this.level = level;
+        this.stars = stars;
+        this.ascension = ascension;
+    }
 
     public int getId() {
         return id;
