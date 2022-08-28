@@ -1,6 +1,7 @@
 package org.acetools.test;
 
 import org.acetools.entity.Hero;
+import org.acetools.entity.Squad;
 import org.acetools.entity.SquadHero;
 import org.acetools.repository.*;
 import org.hibernate.Session;
@@ -11,9 +12,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -43,10 +47,8 @@ class ToolsApplicationTests {
 
     @Test
     void createSquad() throws Exception {
-        Session session = null;
-        if (entityManager == null
-                || (session = entityManager.unwrap(Session.class)) == null) {
-
+        Session session;
+        if (entityManager == null || (session = entityManager.unwrap(Session.class)) == null) {
             throw new NullPointerException();
         }
         final Hero heroA = heroRepository.getReferenceById(40);
@@ -58,22 +60,29 @@ class ToolsApplicationTests {
         final SquadHero squadHeroC = new SquadHero(heroC, null, 60, 6, 6);
         final SquadHero squadHeroD = new SquadHero(heroD, null, 60, 6, 6);
 
-        session.saveOrUpdate(squadHeroA);
-        session.saveOrUpdate(squadHeroB);
-        session.saveOrUpdate(squadHeroC);
-        session.saveOrUpdate(squadHeroD);
+        List<SquadHero> testSquadHeroes = new LinkedList<>();
+        testSquadHeroes.add(squadHeroA);
+        testSquadHeroes.add(squadHeroB);
+        testSquadHeroes.add(squadHeroC);
+        testSquadHeroes.add(squadHeroD);
 
-        List<SquadHero> foundSquadHeroA = squadHeroRepository.findByHeroId(heroA.getId());
-        assertThat(foundSquadHeroA.size()).isGreaterThan(0);
+        Squad testSquad = new Squad();
 
-        List<SquadHero> foundSquadHeroB = squadHeroRepository.findByHeroId(heroB.getId());
-        assertThat(foundSquadHeroB.size()).isGreaterThan(0);
+        for (SquadHero testSquadHero : testSquadHeroes) {
+            session.saveOrUpdate(testSquadHero);
 
-        List<SquadHero> foundSquadHeroC = squadHeroRepository.findByHeroId(heroC.getId());
-        assertThat(foundSquadHeroC.size()).isGreaterThan(0);
+            Optional<SquadHero> foundSquadHero = squadHeroRepository.findById(testSquadHero.getId());
+            assertThat(foundSquadHero.isPresent());
 
-        List<SquadHero> foundSquadHeroD = squadHeroRepository.findByHeroId(heroD.getId());
-        assertThat(foundSquadHeroD.size()).isGreaterThan(0);
+            assertTrue(testSquad.addSquadHero(foundSquadHero.get()));
+        }
+        testSquad.setName("Test squad");
+        squadRepository.save(testSquad);
+        assertTrue(squadRepository.existsById(testSquad.getId()));
+
+        // Clean up
+        for (SquadHero testSquadHero : testSquadHeroes) { session.delete(testSquadHero); }
+        session.delete(testSquad);
 
     }
 }

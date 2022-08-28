@@ -3,22 +3,30 @@ package org.acetools.entity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+/**
+ * Squad contains up to four SquadHeroes.
+ */
 @Entity
 public class Squad {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
 
+    public final static int MAX_HEROES = 4;
+    public final static int MAX_SPELLS = 2;
+
     private String name;
 
-    @OneToMany
-    private List<SquadHero> heroes;
-    @OneToMany
-    private List<Spell> spells;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<SquadHero> heroes;
+    @OneToMany(fetch = FetchType.EAGER)
+    private Set<Spell> spells;
 
     public int getId() {
         return id;
@@ -36,20 +44,45 @@ public class Squad {
         this.name = name;
     }
 
-    public List<SquadHero> getHeroes() {
+    public Set<SquadHero> getHeroes() {
         return heroes;
     }
 
-    public void setHeroes(List<SquadHero> heroes) {
-        this.heroes = heroes;
+    public void setHeroes(Set<SquadHero> heroes) {
+        if (heroes.size() <= MAX_HEROES) {
+            this.heroes = heroes;
+        }
     }
 
-    public List<Spell> getSpells() {
+    public Set<Spell> getSpells() {
         return spells;
     }
 
-    public void setSpells(List<Spell> spells) {
-        this.spells = spells;
+    public void setSpells(Set<Spell> spells) {
+        if (spells.size() <= MAX_SPELLS) {
+            this.spells = spells;
+        }
+    }
+
+    /**
+     * Adds a SquadHero to this squad, if a hero with the same ID isn't already in the squad.
+     * @param heroToAdd The SquadHero to add.
+     * @return true if the SquadHero was added, false if not.
+     */
+    public boolean addSquadHero(SquadHero heroToAdd) {
+        if (null == this.heroes) {
+            heroes = new LinkedHashSet<>();
+        }
+        if (heroes.size() <= MAX_HEROES) {
+            for (SquadHero squadHero : heroes) {
+                if (squadHero.getHero().getId() == heroToAdd.getHero().getId()) {
+                    return false;
+                }
+            }
+            heroes.add(heroToAdd);
+            return true;
+        }
+        return false;
     }
 
     @Override
