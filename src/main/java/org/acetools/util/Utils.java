@@ -51,4 +51,9 @@ public final class Utils {
                 linkTo(methodOn(SquadHeroController.class).one(squadHero.getId())).withSelfRel(),
                 linkTo(methodOn(SquadHeroController.class).all()).withRel("squadhero"));
     }
+    public static EntityModel<Battle> getBattleEntityModel(Battle battle) {
+        return EntityModel.of(battle,
+                linkTo(methodOn(BattleController.class).one(battle.getId())).withSelfRel(),
+                linkTo(methodOn(BattleController.class).all()).withRel("battle"));
+    }
 }

@@ -2,6 +2,7 @@ package org.acetools.controller;
 
 import io.swagger.annotations.Api;
 import org.acetools.entity.GearSet;
+import org.acetools.exception.GearSetAlreadyExistsException;
 import org.acetools.exception.GearSetNotFoundException;
 import org.acetools.repository.GearSetRepository;
 import org.acetools.util.Utils;
@@ -10,9 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,5 +48,17 @@ public class GearSetController {
         GearSet gearSet = gearSetRepository.findById(id).orElseThrow(() -> new GearSetNotFoundException(id));
 
         return Utils.getGearSetEntityModel(gearSet);
+    }
+
+    @PutMapping("/gearset/")
+    public GearSet newGearSet(@RequestBody GearSet newGearSet) {
+        if (logger.isDebugEnabled()) {
+            logger.debug("GearSetController newGearSet - PUT request for potentially new gear set: " + newGearSet.toString());
+        }
+        if (gearSetRepository.existsById(newGearSet.getId())) {
+            throw new GearSetAlreadyExistsException(newGearSet.getId());
+        } else {
+            return gearSetRepository.save(newGearSet);
+        }
     }
 }
