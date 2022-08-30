@@ -1,0 +1,10 @@
+[
+  {"id": 1,"hero": {"id": 126}, "ascension": 6, "level": 60, "stars": 6, "_class":"org.acetools.entity.SquadHero"},
+  {"id": 2,"hero": {"id": 58}, "ascension": 6, "level": 60, "stars": 6, "_class":"org.acetools.entity.SquadHero"},
+  {"id": 3,"hero": {"id": 144}, "ascension": 6, "level": 60, "stars": 6, "_class":"org.acetools.entity.SquadHero"},
+  {"id": 4,"hero": {"id": 122}, "ascension": 6, "level": 60, "stars": 6, "_class":"org.acetools.entity.SquadHero"},
+  {"id": 5,"hero": {"id": 19}, "ascension": 6, "level": 60, "stars": 6, "_class":"org.acetools.entity.SquadHero"},
+  {"id": 6,"hero": {"id": 25}, "ascension": 6, "level": 60, "stars": 6, "_class":"org.acetools.entity.SquadHero"},
+  {"id": 7,"hero": {"id": 40}, "ascension": 6, "level": 60, "stars": 6, "_class":"org.acetools.entity.SquadHero"},
+  {"id": 8,"hero": {"id": 61}, "ascension": 6, "level": 60, "stars": 6, "_class":"org.acetools.entity.SquadHero"}
+]

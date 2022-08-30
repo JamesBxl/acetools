@@ -3,7 +3,6 @@ package org.acetools.entity;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
@@ -27,6 +26,22 @@ public class Squad {
     private Set<SquadHero> heroes;
     @OneToMany(fetch = FetchType.EAGER)
     private Set<Spell> spells;
+
+    public Squad() {
+        // Default constructor
+    }
+
+    public Squad(int id, Set<SquadHero> heroes) {
+        this.id = id;
+        this.heroes = heroes;
+    }
+
+    public Squad(int id, String name, Set<SquadHero> heroes, Set<Spell> spells) {
+        this.id = id;
+        this.name = name;
+        this.heroes = heroes;
+        this.spells = spells;
+    }
 
     public int getId() {
         return id;

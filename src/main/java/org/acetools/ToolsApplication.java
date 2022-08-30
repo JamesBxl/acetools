@@ -32,7 +32,8 @@ public class ToolsApplication {
                 new ClassPathResource("datafiles/factions.json"),
                 new ClassPathResource("datafiles/spells.json"),
                 new ClassPathResource("datafiles/gearsets.json"),
-                new ClassPathResource("datafiles/heroes.json")});
+                new ClassPathResource("datafiles/heroes.json"),
+                new ClassPathResource("datafiles/squadheroes.json")});
         return factory;
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class SquadHero {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne(fetch = FetchType.EAGER)
     private Hero hero;

@@ -1,8 +1,9 @@
 package org.acetools.controller;
 
 import io.swagger.annotations.Api;
-import org.acetools.exception.FactionNotFoundException;
 import org.acetools.entity.Faction;
+import org.acetools.exception.FactionAlreadyExistsException;
+import org.acetools.exception.FactionNotFoundException;
 import org.acetools.repository.FactionRepository;
 import org.acetools.util.Utils;
 import org.slf4j.Logger;
@@ -10,9 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,5 +48,17 @@ public class FactionController {
         Faction faction = factionRepository.findById(id).orElseThrow(() -> new FactionNotFoundException(id));
 
         return Utils.getFactionEntityModel(faction);
+    }
+
+    @PutMapping("/faction/")
+    public Faction newFaction(@RequestBody Faction newFaction) {
+        if (logger.isDebugEnabled()) {
+            logger.debug("GearSetController newGearSet - PUT request for potentially new gear set: " + newFaction.toString());
+        }
+        if (factionRepository.existsById(newFaction.getId())) {
+            throw new FactionAlreadyExistsException(newFaction.getId());
+        } else {
+            return factionRepository.save(newFaction);
+        }
     }
 }
