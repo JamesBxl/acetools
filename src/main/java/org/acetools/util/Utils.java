@@ -2,7 +2,17 @@ package org.acetools.util;
 
 import org.acetools.controller.*;
 import org.acetools.entity.*;
+import org.apache.http.client.HttpClient;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.SSLContextBuilder;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+
+import javax.net.ssl.SSLContext;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -55,5 +65,22 @@ public final class Utils {
         return EntityModel.of(battle,
                 linkTo(methodOn(BattleController.class).one(battle.getId())).withSelfRel(),
                 linkTo(methodOn(BattleController.class).all()).withRel("battle"));
+    }
+
+    @Value("${trust.store}")
+    private Resource trustStore;
+    @Value("${trust.store.password}")
+    private String trustStorePassword;
+    RestTemplate restTemplate() throws Exception {
+        SSLContext sslContext = new SSLContextBuilder()
+                .loadTrustMaterial(trustStore.getURL(), trustStorePassword.toCharArray())
+                .build();
+        SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext);
+        HttpClient httpClient = HttpClients.custom()
+                .setSSLSocketFactory(socketFactory)
+                .build();
+        HttpComponentsClientHttpRequestFactory factory =
+                new HttpComponentsClientHttpRequestFactory(httpClient);
+        return new RestTemplate(factory);
     }
 }
